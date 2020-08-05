@@ -26,15 +26,15 @@ public class UserController {
     public  UserResponse getUserById (@PathVariable(name = "id")int id){
         return  new UserResponse(id, "User" + id);
     }
-
+    //GET PAGE WORKSHOP Step_02
     //Ref. https://spring.io/guides/gs/rest-service/
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
+
     @GetMapping("/user/{id}")
     public String getAllUserAndPage(@PathVariable(name = "id")int id,
                                     @RequestParam(required = false,defaultValue = "1") String page,
                                     @RequestParam(name = "item_per_page",required = false,defaultValue = "10") String itemPerPage) {
         return (String.format(template, "User : " + id + "Page: " + page + " , itemPerPage: " + itemPerPage));
-
     }
 }
