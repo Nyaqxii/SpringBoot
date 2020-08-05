@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.concurrent.atomic.AtomicLong;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +26,15 @@ public class UserController {
     public  UserResponse getUserById (@PathVariable(name = "id")int id){
         return  new UserResponse(id, "User" + id);
     }
+
     //Ref. https://spring.io/guides/gs/rest-service/
-    @GetMapping("/users")
-    public String getAllUserAndPage(@RequestParam(required = false,defaultValue = "1") String page,
+    private static final String template = "Hello, %s!";
+    private final AtomicLong counter = new AtomicLong();
+    @GetMapping("/user/{id}")
+    public String getAllUserAndPage(@PathVariable(name = "id")int id,
+                                    @RequestParam(required = false,defaultValue = "1") String page,
                                     @RequestParam(name = "item_per_page",required = false,defaultValue = "10") String itemPerPage) {
-        return "Page: " + page + " , itemPerPage: " + itemPerPage;
+        return (String.format(template, "User : " + id + "Page: " + page + " , itemPerPage: " + itemPerPage));
 
     }
 }
