@@ -9,7 +9,7 @@ public class UserResponse {
         this.name = name;
     }
 
-    //Generate Get Set
+    //Code > Generate Get Set
     public int getId() {
         return id;
     }
