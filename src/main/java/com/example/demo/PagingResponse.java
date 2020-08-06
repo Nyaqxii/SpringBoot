@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.List;
 
-@JsonPropertyOrder({"page", "item_per_page", "users"})
+@JsonPropertyOrder({"page", "item_per_page", "users" })
 public class PagingResponse {
     @JsonProperty("users")
-    private List<UsersResponse> usersResponseList;
+    private List<UsersResponse> users;
 
+    @JsonProperty("page_no")
     private int page;
 
     @JsonProperty("item_per_page")
@@ -20,12 +21,12 @@ public class PagingResponse {
         this.itemPerPage = itemPerPage;
     }
 
-    public void setUsersResponse(List<UsersResponse> usersResponseList) {
-        this.usersResponseList = usersResponseList;
+    public List<UsersResponse> getUsers() {
+        return users;
     }
 
-    public List<UsersResponse> getUsersResponseList() {
-        return usersResponseList;
+    public void setUsers(List<UsersResponse> users) {
+        this.users = users;
     }
 
     public int getPage() {
